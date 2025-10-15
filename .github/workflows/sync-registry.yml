@@ -31,6 +31,17 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Check token existence
+              run: |
+                  if [ -z "${{ secrets.REGISTRY_GITHUB_TOKEN }}" ]; then
+                    echo "ERROR: REGISTRY_GITHUB_TOKEN secret is not set"
+                    exit 1
+                  else
+                    echo "Token is set"
+                  fi
+              env:
+                  REGISTRY_GITHUB_TOKEN: ${{ secrets.REGISTRY_GITHUB_TOKEN }}
+
             - name: Run registry sync
               env:
                   REGISTRY_GITHUB_TOKEN: ${{ secrets.REGISTRY_GITHUB_TOKEN }}

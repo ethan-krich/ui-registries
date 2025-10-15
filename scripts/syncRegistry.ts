@@ -6,7 +6,6 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const main = async () => {
-  console.log(process.env.REGISTRY_GITHUB_TOKEN)
   const octokit = new Octokit({
     auth: process.env.REGISTRY_GITHUB_TOKEN,
   })
