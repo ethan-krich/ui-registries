@@ -34,7 +34,7 @@
         "turbo/no-undeclared-env-vars": [
           "error",
           {
-            "allowList": ["^GITHUB_TOKEN$"]
+            "allowList": ["^REGISTRY_GITHUB_TOKEN$"]
           }
         ]
       }

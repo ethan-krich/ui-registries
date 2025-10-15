@@ -7,7 +7,7 @@ dotenv.config()
 
 const main = async () => {
   const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
+    auth: process.env.REGISTRY_GITHUB_TOKEN,
   })
 
   try {
