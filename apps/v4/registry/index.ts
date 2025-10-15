@@ -1,4 +1,4 @@
-import { registryItemSchema, type Registry } from "shadcn/schema"
+import { registryItemSchema, type Registry } from "ui-registries/schema"
 import { z } from "zod"
 
 import { blocks } from "@/registry/registry-blocks"
@@ -30,8 +30,8 @@ const NEW_YORK_V4_STYLE = {
 }
 
 export const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
+  name: "ui-registries/ui",
+  homepage: "https://ui.ui-registries.com",
   items: z.array(registryItemSchema).parse(
     [
       {

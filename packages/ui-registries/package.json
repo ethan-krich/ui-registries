@@ -1,5 +1,5 @@
 {
-  "name": "shadcn",
+  "name": "ui-registries",
   "version": "3.4.2",
   "description": "Add components to your apps.",
   "publishConfig": {
@@ -7,13 +7,13 @@
   },
   "license": "MIT",
   "author": {
-    "name": "shadcn",
-    "url": "https://twitter.com/shadcn"
+    "name": "ui-registries ",
+    "url": "https://twitter.com/ui-registries "
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shadcn/ui.git",
-    "directory": "packages/shadcn"
+    "url": "https://github.com/ui-registries /ui.git",
+    "directory": "packages/ui-registries "
   },
   "files": [
     "dist"
@@ -23,7 +23,7 @@
     "ui",
     "tailwind",
     "radix-ui",
-    "shadcn"
+    "ui-registries "
   ],
   "type": "module",
   "exports": {
@@ -51,7 +51,7 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist && rimraf components",
     "start:dev": "cross-env REGISTRY_URL=http://localhost:4000/r node dist/index.js",
-    "start:prod": "cross-env REGISTRY_URL=https://ui.shadcn.com/r node dist/index.js",
+    "start:prod": "cross-env REGISTRY_URL=https://ui.ui-registries .com/r node dist/index.js",
     "start": "node dist/index.js",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",

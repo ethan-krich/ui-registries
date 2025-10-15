@@ -411,18 +411,18 @@ You can search, view and add items from the registry index without configuring t
 They'll be automatically added to your `components.json` file for you.
 
 ```bash
-npx shadcn add @ai-elements/prompt-input
+npx ui-registries add @ai-elements/prompt-input
 ```
 
-The full list of registries is available at [https://ui.shadcn.com/r/registries.json](https://ui.shadcn.com/r/registries.json).
+The full list of registries is available at [https://ui.ui-registries.com/r/registries.json](https://ui.ui-registries.com/r/registries.json).
 
-To add a registry to the index, submit a PR to the `shadcn/ui` repository. See the [registry index documentation](/docs/registry/registry-index) for more details.
+To add a registry to the index, submit a PR to the `ui-registries/ui` repository. See the [registry index documentation](/docs/registry/registry-index) for more details.
 
 ---
 
-## August 2025 - shadcn CLI 3.0 and MCP Server
+## August 2025 - ui-registries CLI 3.0 and MCP Server
 
-We just shipped shadcn CLI 3.0 with support for namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
+We just shipped ui-registries CLI 3.0 with support for namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
 
 ### What's New
 
@@ -459,7 +459,7 @@ Configure registries in your `components.json`:
 Then use the `@registry/name` format to install components:
 
 ```bash
-npx shadcn add @acme/button @internal/auth-system
+npx ui-registries add @acme/button @internal/auth-system
 ```
 
 It's completely decentralized. There's no central registrar. Create any namespace you want and organize components however makes sense for your team.
@@ -481,7 +481,7 @@ Components can even depend on resources from different registries. Everything ge
   "name": "dashboard",
   "type": "registry:block",
   "registryDependencies": [
-    "@shadcn/card", // From default registry
+    "@ui-registries/card", // From default registry
     "@v0/chart", // From v0 registry
     "@acme/data-table", // From acme registry
     "@lib/data-fetcher", // Utility library
@@ -520,19 +520,19 @@ Three new commands make it easy to find exactly what you need:
 1. View items from the registry before installing
 
 ```bash
-npx shadcn view @acme/auth-system
+npx ui-registries view @acme/auth-system
 ```
 
 2. Search items from registries
 
 ```bash
-npx shadcn search @tweakcn -q "dark"
+npx ui-registries search @tweakcn -q "dark"
 ```
 
 3. List all items from a registry
 
 ```bash
-npx shadcn list @acme
+npx ui-registries list @acme
 ```
 
 Preview components before installing them. Search across multiple registries. See the code and all dependencies upfront.
@@ -547,7 +547,7 @@ Preview components before installing them. Search across multiple registries. Se
   className="mt-6 w-full overflow-hidden rounded-lg border"
 />
 
-Back in April, we [introduced](https://x.com/shadcn/status/1917597228513853603) the first version of the MCP server. Since then, we've taken everything we learned and built a better MCP server.
+Back in April, we [introduced](https://x.com/ui-registries/status/1917597228513853603) the first version of the MCP server. Since then, we've taken everything we learned and built a better MCP server.
 
 Here's what's new:
 
@@ -560,7 +560,7 @@ Here's what's new:
 Add the MCP server to your project:
 
 ```bash
-npx shadcn@latest mcp init
+npx ui-registries@latest mcp init
 ```
 
 See the [docs](/docs/mcp) for more details.
@@ -614,11 +614,11 @@ For developers, if you're using the programmatic APIs directly, we've deprecated
 
 - `fetchRegistry` → `getRegistry`
 - `resolveRegistryTree` → `resolveRegistryItems`
-- Schema moved from `shadcn/registry` to `shadcn/schema` package
+- Schema moved from `ui-registries/registry` to `ui-registries/schema` package
 
 ```diff
-- import { registryItemSchema } from "shadcn/registry"
-+ import { registryItemSchema } from "shadcn/schema"
+- import { registryItemSchema } from "ui-registries/registry"
++ import { registryItemSchema } from "ui-registries/schema"
 ```
 
 That's it. Seriously. Everything else just works.
@@ -637,14 +637,14 @@ See the [docs](/docs/registry/examples) for more details and examples.
 
 ## July 2025 - Local File Support
 
-The shadcn CLI now supports local files. Initialize projects and add components, themes, hooks, utils and more from local JSON files.
+The ui-registries CLI now supports local files. Initialize projects and add components, themes, hooks, utils and more from local JSON files.
 
 ```bash
 # Initialize a project from a local file
-npx shadcn init ./template.json
+npx ui-registries init ./template.json
 
 # Add a component from a local file
-npx shadcn add ./block.json
+npx ui-registries add ./block.json
 ```
 
 This feature enables powerful new workflows:
@@ -661,7 +661,7 @@ This feature enables powerful new workflows:
 We've added a new command to migrate to the new `radix-ui` package. This command will replace all `@radix-ui/react-*` imports with `radix-ui`.
 
 ```bash
-npx shadcn@latest migrate radix
+npx ui-registries@latest migrate radix
 ```
 
 It will automatically update all imports in your `ui` components and install `radix-ui` as a dependency.
@@ -689,7 +689,7 @@ To upgrade your project to the latest version of the `Calendar` component, see t
 
 ## May 2025 - New Site
 
-We've upgraded [ui.shadcn.com](https://ui.shadcn.com) to Next.js 15.3 and Tailwind v4. The site now uses the upgraded `new-york` components.
+We've upgraded [ui.ui-registries.com](https://ui.ui-registries.com) to Next.js 15.3 and Tailwind v4. The site now uses the upgraded `new-york` components.
 
 We've also made some minor design updates to make the site faster and easier to navigate.
 
@@ -697,7 +697,7 @@ This upgrade unlocks a lot of new features that we're working on. More to come.
 
 ## April 2025 - MCP
 
-We're working on zero-config MCP support for shadcn/ui registry. One command `npx shadcn registry:mcp` to make any registry mcp-compatible.
+We're working on zero-config MCP support for ui-registries/ui registry. One command `npx ui-registries registry:mcp` to make any registry mcp-compatible.
 
 <Image
   src="/images/mcp.jpeg"
@@ -707,11 +707,11 @@ We're working on zero-config MCP support for shadcn/ui registry. One command `np
   className="mt-6 w-full overflow-hidden rounded-lg border"
 />
 
-Learn more in the [thread here](https://x.com/shadcn/status/1917597228513853603).
+Learn more in the [thread here](https://x.com/ui-registries/status/1917597228513853603).
 
-## March 2025 - shadcn 2.5.0
+## March 2025 - ui-registries 2.5.0
 
-We tagged shadcn 2.5.0 earlier this week. It comes with a pretty cool feature: **resolve anywhere**.
+We tagged ui-registries 2.5.0 earlier this week. It comes with a pretty cool feature: **resolve anywhere**.
 
 Registries can now place files anywhere in an app and we'll properly resolve imports. No need to stick to a fixed file structure. It can even add files outside the registry itself.
 
@@ -719,7 +719,7 @@ On install, we track all files and perform a multi-pass resolution to correctly 
 
 ## March 2025 - Cross-framework Route Support
 
-The shadcn CLI can now auto-detect your framework and adapts routes for you.
+The ui-registries CLI can now auto-detect your framework and adapts routes for you.
 
 Works with all frameworks including Laravel, Vite and React Router.
 
@@ -762,12 +762,12 @@ See the [docs](/docs/blocks) page to get started.
 
 ## December 2024 - Monorepo Support
 
-Until now, using shadcn/ui in a monorepo was a bit of a pain. You could add
+Until now, using ui-registries/ui in a monorepo was a bit of a pain. You could add
 components using the CLI, but you had to manage where the components
 were installed and manually fix import paths.
 
 With the new monorepo support in the CLI, we've made it a lot easier to use
-shadcn/ui in a monorepo.
+ui-registries/ui in a monorepo.
 
 The CLI now understands the monorepo structure and will install the components,
 dependencies and registry dependencies to the correct paths and handle imports
@@ -783,11 +783,11 @@ An update on icons. The new-york style now uses Lucide as the default icon set.
 - No breaking changes for existing projects
 - Use the CLI to (optionally) migrate primitives to Lucide
 
-For more info on why we're doing this, see the [thread](https://x.com/shadcn/status/1853902179041702169).
+For more info on why we're doing this, see the [thread](https://x.com/ui-registries/status/1853902179041702169).
 
 ## October 2024 - React 19
 
-shadcn/ui is now compatible with React 19 and Next.js 15.
+ui-registries/ui is now compatible with React 19 and Next.js 15.
 
 We published a guide to help you upgrade your project to React 19.
 
@@ -801,25 +801,25 @@ I don't like building sidebars. So I built 30+ of them. All types. Then simplifi
 
 It works with Next.js, Remix, Vite & Laravel.
 
-See the announcement [here](https://x.com/shadcn/status/1847359896557408461).
+See the announcement [here](https://x.com/ui-registries/status/1847359896557408461).
 
-## August 2024 - npx shadcn init
+## August 2024 - npx ui-registries init
 
-The new CLI is now available. It's a complete rewrite with a lot of new features and improvements. You can now install components, themes, hooks, utils and more using `npx shadcn add`.
+The new CLI is now available. It's a complete rewrite with a lot of new features and improvements. You can now install components, themes, hooks, utils and more using `npx ui-registries add`.
 
 This is a major step towards distributing code that you and your LLMs can access and use.
 
 1. First up, the cli now has support for all major React framework out of the box. Next.js, Remix, Vite and Laravel. And when you init into a new app, we update your existing Tailwind files instead of overriding.
 2. A component now ship its own dependencies. Take the accordion for example, it can define its Tailwind keyframes. When you add it to your project, we'll update your tailwind.config.ts file accordingly.
-3. You can also install remote components using url. `npx shadcn add https://acme.com/registry/navbar.json`.
-4. We have also improve the init command. It does framework detection and can even init a brand new Next.js app in one command. `npx shadcn init`.
+3. You can also install remote components using url. `npx ui-registries add https://acme.com/registry/navbar.json`.
+4. We have also improve the init command. It does framework detection and can even init a brand new Next.js app in one command. `npx ui-registries init`.
 5. We have created a new schema that you can use to ship your own component registry. And since it has support for urls, you can even use it to distribute private components.
 6. And a few more updates like better error handling and monorepo support.
 
 You can try the new cli today.
 
 ```bash
-npx shadcn init sidebar-01 login-01
+npx ui-registries init sidebar-01 login-01
 ```
 
 ### Update Your Project
@@ -828,7 +828,7 @@ To update an existing project to use the new CLI, update your `components.json` 
 
 ```json showLineNumbers {7-13} title="components.json"
 {
-  "$schema": "https://ui.shadcn.com/schema.json",
+  "$schema": "https://ui.ui-registries.com/schema.json",
   "style": "new-york",
   "tailwind": {
     // ...
@@ -897,7 +897,7 @@ One of the most requested features since launch has been layouts: admin dashboar
   <span className="sr-only">View the blocks library</span>
 </a>
 
-Blocks are ready-made components that you can use to build your apps. They are fully responsive, accessible, and composable, meaning they are built using the same principles as the rest of the components in shadcn/ui.
+Blocks are ready-made components that you can use to build your apps. They are fully responsive, accessible, and composable, meaning they are built using the same principles as the rest of the components in ui-registries/ui.
 
 We're starting with dashboard layouts and authentication pages, with plans to add more blocks in the coming weeks.
 
@@ -975,7 +975,7 @@ We've added a new Breadcrumb component and an Input OTP component.
 
 ### Breadcrumb
 
-An accessible and flexible breadcrumb component. It has support for collapsed items, custom separators, bring-your-own routing `<Link />` and composable with other shadcn/ui components.
+An accessible and flexible breadcrumb component. It has support for collapsed items, custom separators, bring-your-own routing `<Link />` and composable with other ui-registries/ui components.
 
 <ComponentPreview name="breadcrumb-demo" />
 
@@ -993,7 +993,7 @@ If you have a [v0](https://v0.dev), the new components are available for generat
 
 ## December 2023 - New components, CLI and more
 
-We've added new components to shadcn/ui and made a lot of improvements to the CLI.
+We've added new components to ui-registries/ui and made a lot of improvements to the CLI.
 
 Here's a quick overview of what's new:
 
@@ -1036,7 +1036,7 @@ Build resizable panel groups and layouts with this `<Resizable />` component.
 
 ### Sonner
 
-Another one by [emilkowalski\_](https://twitter.com/emilkowalski_). The last toast component you'll ever need. Sonner is now availabe in shadcn/ui.
+Another one by [emilkowalski\_](https://twitter.com/emilkowalski_). The last toast component you'll ever need. Sonner is now availabe in ui-registries/ui.
 
 <ComponentPreview name="sonner-demo" />
 
@@ -1044,7 +1044,7 @@ Another one by [emilkowalski\_](https://twitter.com/emilkowalski_). The last toa
 
 This has been one of the most requested features. You can now configure a custom Tailwind prefix and the cli will automatically prefix your utility classes when adding components.
 
-This means you can now easily add shadcn/ui components to existing projects like Docusaurus, Nextra...etc. A drop-in for your existing design system with no conflict. 🔥
+This means you can now easily add ui-registries/ui components to existing projects like Docusaurus, Nextra...etc. A drop-in for your existing design system with no conflict. 🔥
 
 ```tsx /tw-/
 <AlertDialog className="tw-grid tw-gap-4 tw-border tw-bg-background tw-shadow-lg" />
@@ -1120,7 +1120,7 @@ I've been working on a new CLI for the past few weeks. It's a complete rewrite. 
 ### `init`
 
 ```bash
-npx shadcn@latest init
+npx ui-registries@latest init
 ```
 
 When you run the `init` command, you will be asked a few questions to configure `components.json`:
@@ -1162,7 +1162,7 @@ This means you can now use the CLI with any directory structure including `src` 
 ### `add`
 
 ```bash
-npx shadcn@latest add
+npx ui-registries@latest add
 ```
 
 The `add` command is now much more capable. You can now add UI components but also import more complex components (coming soon).
@@ -1172,7 +1172,7 @@ The CLI will automatically resolve all components and dependencies, format them 
 ### `diff` (experimental)
 
 ```bash
-npx shadcn diff
+npx ui-registries diff
 ```
 
 We're also introducing a new `diff` command to help you keep track of upstream updates.
@@ -1182,7 +1182,7 @@ You can use this command to see what has changed in the upstream repository and 
 Run the `diff` command to get a list of components that have updates available:
 
 ```bash
-npx shadcn diff
+npx ui-registries diff
 ```
 
 ```txt
@@ -1197,7 +1197,7 @@ The following components have updates available:
 Then run `diff [component]` to see the changes:
 
 ```bash
-npx shadcn diff alert
+npx ui-registries diff alert
 ```
 
 ```diff /pl-12/
@@ -1487,7 +1487,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
+      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>

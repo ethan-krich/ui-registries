@@ -17,7 +17,10 @@ import {
   Terminal,
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
+import {
+  registryItemFileSchema,
+  registryItemSchema,
+} from "ui-registries/schema"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
@@ -209,11 +212,11 @@ function BlockViewerToolbar() {
           className="w-fit gap-1 px-2 shadow-none"
           size="sm"
           onClick={() => {
-            copyToClipboard(`npx shadcn@latest add ${item.name}`)
+            copyToClipboard(`npx ui-registries@latest add ${item.name}`)
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
-          <span>npx shadcn add {item.name}</span>
+          <span>npx ui-registries add {item.name}</span>
         </Button>
         <Separator orientation="vertical" className="mx-1 !h-4" />
         <OpenInV0Button name={item.name} />
