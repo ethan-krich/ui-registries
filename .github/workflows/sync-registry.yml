@@ -10,6 +10,9 @@ jobs:
     sync-registry:
         runs-on: ubuntu-latest
 
+        environment:
+            name: ${{ github.ref_name }}
+
         permissions:
             contents: write
 
