@@ -27,6 +27,17 @@
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser"
+    },
+    {
+      "files": ["scripts/**/*.ts"],
+      "rules": {
+        "turbo/no-undeclared-env-vars": [
+          "error",
+          {
+            "allowList": ["^GITHUB_TOKEN$"]
+          }
+        ]
+      }
     }
   ]
 }

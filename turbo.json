@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": ["NODE_ENV", "GITHUB_TOKEN"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -55,6 +55,10 @@
     "registry:build": {
       "cache": false,
       "outputs": []
+    },
+    "registry:sync": {
+      "cache": false,
+      "env": ["GITHUB_TOKEN"]
     }
   }
 }

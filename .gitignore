@@ -39,3 +39,6 @@ tsconfig.tsbuildinfo
 .idea
 .fleet
 .vscode
+
+# secrets
+.env
