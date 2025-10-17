@@ -101,12 +101,23 @@ const main = async () => {
 
     const validRegistries = registryFiles.filter((r) => r !== null)
     const newRegistriesFile: any = {}
+    const registryMetadata: any[] = []
+    const seenRegistryNames = new Set<string>()
     for (const registry of validRegistries) {
       let registryUrl = registry.content.homepage
       if (registryUrl && !registryUrl.endsWith("/")) {
         registryUrl += "/"
       }
       registryUrl = registryUrl + "r/{name}.json"
+
+      const registryName = registry.content.name
+      if (registryName && !seenRegistryNames.has(registryName)) {
+        registryMetadata.push({
+          ...registry.content,
+          github: registry.repository,
+        })
+        seenRegistryNames.add(registryName)
+      }
 
       try {
         const url = new URL(registryUrl)
@@ -141,8 +152,12 @@ const main = async () => {
 
     console.log("Adding", Object.keys(newRegistriesFile).length, "registries")
     fs.writeFileSync(
-      path.join(process.cwd(), "apps/v4/public/r/registries.json"),
+      path.join(process.cwd(), "apps/web/public/r/registries.json"),
       JSON.stringify(newRegistriesFile, null, 2)
+    )
+    fs.writeFileSync(
+      path.join(process.cwd(), "apps/web/public/r/registries-metadata.json"),
+      JSON.stringify(registryMetadata, null, 2)
     )
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error)
