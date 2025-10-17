@@ -6,7 +6,7 @@ export const REGISTRY_URL =
 
 export const EXTERNAL_REGISTRY_URL =
   process.env.EXTERNAL_REGISTRY_URL ??
-  "https://ui-registries.vercel.app/r/registries.json"
+  "https://ui-registries.vercel.app/r/"
 
 export const FALLBACK_STYLE = "new-york-v4"
 
