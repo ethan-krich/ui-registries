@@ -4,6 +4,7 @@ import { configWithDefaults } from "@/src/registry/config"
 import {
   BASE_COLORS,
   BUILTIN_REGISTRIES,
+  EXTERNAL_REGISTRY_URL,
   REGISTRY_URL,
 } from "@/src/registry/constants"
 import {
@@ -284,7 +285,7 @@ export async function getRegistriesIndex(options?: { useCache?: boolean }) {
     ...options,
   }
 
-  const url = `${REGISTRY_URL}/registries.json`
+  const url = `${EXTERNAL_REGISTRY_URL}/registries.json`
   const [data] = await fetchRegistry([url], {
     useCache: options.useCache,
   })

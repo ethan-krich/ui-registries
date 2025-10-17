@@ -4,6 +4,9 @@ import { z } from "zod"
 export const REGISTRY_URL =
   process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
+export const EXTERNAL_REGISTRY_URL =
+  process.env.EXTERNAL_REGISTRY_URL ?? "http://localhost:3000/r"
+
 export const FALLBACK_STYLE = "new-york-v4"
 
 export const BASE_COLORS = [

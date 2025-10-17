@@ -10,6 +10,7 @@
         "UPSTASH_REDIS_REST_TOKEN",
         "COMPONENTS_REGISTRY_URL",
         "REGISTRY_URL",
+        "EXTERNAL_REGISTRY_URL",
         "npm_config_user_agent",
         "https_proxy",
         "V0_URL",
@@ -50,6 +51,7 @@
     },
     "test": {
       "cache": false,
+      "env": ["REGISTRY_URL", "EXTERNAL_REGISTRY_URL"],
       "outputs": []
     },
     "registry:build": {
