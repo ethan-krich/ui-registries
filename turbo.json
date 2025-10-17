@@ -1,6 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV", "REGISTRY_GITHUB_TOKEN"],
+  "globalEnv": [
+    "NODE_ENV",
+    "REGISTRY_GITHUB_TOKEN",
+    "APP_URL",
+    "EXTERNAL_REGISTRY_URL"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

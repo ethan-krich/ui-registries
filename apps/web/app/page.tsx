@@ -1,3 +1,5 @@
+import { promises as fs } from "fs"
+import path from "path"
 import Image from "next/image"
 
 import { RegistryMetadata } from "@/types/registry"
@@ -25,10 +27,14 @@ export default async function Home({
 }: {
   searchParams: { page: string }
 }) {
-  const registryMetadataRaw = await fetch(
-    `${process.env.APP_URL}/r/registries-metadata.json`
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "r",
+    "registries-metadata.json"
   )
-  const registryMetadata = await registryMetadataRaw.json()
+  const fileContents = await fs.readFile(filePath, "utf8")
+  const registryMetadata = JSON.parse(fileContents)
   const itemsPerPage = 50
 
   return (
