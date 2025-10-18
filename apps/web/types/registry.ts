@@ -47,5 +47,6 @@ export type RegistryMetadata = {
   name: string
   homepage: string
   github: string
+  imagePreview: string
   items: RegistryItem[]
 }

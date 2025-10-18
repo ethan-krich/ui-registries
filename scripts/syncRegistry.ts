@@ -2,8 +2,18 @@ import fs from "fs"
 import path from "path"
 import { Octokit } from "@octokit/core"
 import dotenv from "dotenv"
+import { getLinkPreview } from "link-preview-js"
 
 dotenv.config()
+
+const isValidUrl = (url: string) => {
+  try {
+    new URL(url)
+    return true
+  } catch {
+    return false
+  }
+}
 
 const main = async () => {
   const octokit = new Octokit({
@@ -101,23 +111,48 @@ const main = async () => {
 
     const validRegistries = registryFiles.filter((r) => r !== null)
     const newRegistriesFile: any = {}
-    const registryMetadata: any[] = []
     const seenRegistryNames = new Set<string>()
+
+    const uniqueRegistries = validRegistries.filter((registry) => {
+      const registryName = registry.content.name
+      if (registryName && !seenRegistryNames.has(registryName)) {
+        seenRegistryNames.add(registryName)
+        return true
+      }
+      return false
+    })
+
+    const imagePreviews = await Promise.all(
+      uniqueRegistries.map(async (registry) => {
+        if (!isValidUrl(registry.content.homepage)) {
+          return "/placeholder.png"
+        }
+        try {
+          const preview = await getLinkPreview(registry.content.homepage)
+          const imagePreview =
+            "images" in preview && preview.images?.[0]
+              ? preview.images[0]
+              : "/placeholder.png"
+          console.log(imagePreview)
+          return imagePreview
+        } catch (error) {
+          return "/placeholder.png"
+        }
+      })
+    )
+
+    const registryMetadata = uniqueRegistries.map((registry, index) => ({
+      ...registry.content,
+      github: registry.repository,
+      imagePreview: imagePreviews[index],
+    }))
+
     for (const registry of validRegistries) {
       let registryUrl = registry.content.homepage
       if (registryUrl && !registryUrl.endsWith("/")) {
         registryUrl += "/"
       }
       registryUrl = registryUrl + "r/{name}.json"
-
-      const registryName = registry.content.name
-      if (registryName && !seenRegistryNames.has(registryName)) {
-        registryMetadata.push({
-          ...registry.content,
-          github: registry.repository,
-        })
-        seenRegistryNames.add(registryName)
-      }
 
       try {
         const url = new URL(registryUrl)

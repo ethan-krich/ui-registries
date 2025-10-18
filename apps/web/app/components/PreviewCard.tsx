@@ -1,9 +1,11 @@
-import Image from "next/image"
+"use client"
+
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ExternalLinkIcon } from "lucide-react"
 
 import { RegistryMetadata } from "@/types/registry"
-import { getLinkPreviewImage, isValidUrl } from "@/lib/getLinkPreview"
+import { isValidUrl } from "@/lib/link"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -14,12 +16,11 @@ import {
 } from "@/components/ui/card"
 import ImageWithFallback from "@/components/fallbackImage"
 
-export default async function PreviewCard({
+export default function PreviewCard({
   registry,
 }: {
   registry: RegistryMetadata
 }) {
-  const linkPreview = await getLinkPreviewImage(registry.homepage)
   const hasValidHomepage = isValidUrl(registry.homepage)
 
   return (
@@ -32,8 +33,8 @@ export default async function PreviewCard({
       <CardContent>
         <ImageWithFallback
           fallbackSrc="/placeholder.png"
-          src={linkPreview?.images?.[0] || "/placeholder.png"}
-          alt={linkPreview?.title || "Placeholder"}
+          src={registry.imagePreview || "/placeholder.png"}
+          alt={registry.name}
           width={500}
           height={500}
         />

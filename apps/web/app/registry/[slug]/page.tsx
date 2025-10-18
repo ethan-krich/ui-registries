@@ -2,7 +2,6 @@ import { notFound } from "next/navigation"
 import fetchMeta from "fetch-meta-tags"
 
 import { RegistryMetadata } from "@/types/registry"
-import { getLinkPreviewImage } from "@/lib/getLinkPreview"
 
 import { RegistryHeader } from "./components/RegistryHeader"
 import { RegistryInfo } from "./components/RegistryInfo"
@@ -30,7 +29,6 @@ export default async function RegistryPage({
 
   const meta = await fetchMeta(registry.homepage)
   const github = `https://github.com/${registry.github}`
-  const linkPreview = await getLinkPreviewImage(registry.homepage)
 
   return (
     <div className="flex flex-col gap-4 lg:flex-row">
@@ -38,7 +36,7 @@ export default async function RegistryPage({
         <div className="m-4 sm:m-8">
           <RegistryHeader iconSrc={meta.icon} name={registry.name} />
           <RegistryPreviewImage
-            src={linkPreview?.images?.[0]}
+            src={registry.imagePreview || "/placeholder.png"}
             alt={registry.name}
           />
         </div>
