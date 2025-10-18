@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "ui-registries": "workspace:*"
+    "ui-registries-cli": "workspace:*"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
