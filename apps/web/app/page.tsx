@@ -26,8 +26,9 @@ import Results from "./components/Results"
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { page: string }
+  searchParams: Promise<{ page: string }>
 }) {
+  const resolvedSearchParams = await searchParams
   const filePath = path.join(
     process.cwd(),
     "public",
@@ -45,12 +46,12 @@ export default async function Home({
       <main className="bg-background flex flex-col items-center justify-center">
         <Results
           registryMetadata={registryMetadata}
-          searchParams={searchParams}
+          searchParams={resolvedSearchParams}
         />
         <div>
           <PaginationMenu
             metadataLength={registryMetadata.length}
-            currentPage={parseInt(searchParams.page || "1")}
+            currentPage={parseInt(resolvedSearchParams.page || "1")}
           />
         </div>
         <div className="bg-card  rounded-t-4xl min-h-20 w-full border p-4">
