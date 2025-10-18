@@ -1,21 +1,24 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Image, { ImageProps } from "next/image"
 
-const ImageWithFallback = (props: ImageProps & { fallbackSrc: string }) => {
-  const { src, alt, fallbackSrc, ...rest } = props
+import { Skeleton } from "./ui/skeleton"
+
+const ImageWithFallback = (
+  props: ImageProps & { fallbackSrc: string; isLoading?: boolean }
+) => {
+  const { src, alt, fallbackSrc, isLoading, ...rest } = props
   const [imgSrc, setImgSrc] = useState(src)
 
-  return (
-    <Image
-      {...rest}
-      alt={alt}
-      src={imgSrc}
-      onError={() => {
-        setImgSrc(fallbackSrc)
-      }}
-    />
+  useEffect(() => {
+    setImgSrc(src)
+  }, [src])
+
+  return isLoading ? (
+    <Skeleton className={`w-[${rest.width}] h-[${rest.height}] min-h-50`} />
+  ) : (
+    <Image {...rest} alt={alt} src={imgSrc} />
   )
 }
 
