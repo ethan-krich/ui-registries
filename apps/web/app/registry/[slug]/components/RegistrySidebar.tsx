@@ -10,7 +10,7 @@ export type RegistrySidebarProps = {
 
 export function RegistrySidebar({ githubUrl, homepage }: RegistrySidebarProps) {
   return (
-    <div className="sticky top-0 m-8 mr-auto flex h-full w-1/4 flex-col gap-4 p-4">
+    <div className="m-4 flex w-full flex-col gap-4 p-4 sm:m-8 lg:sticky lg:top-0 lg:mr-auto lg:h-full lg:w-1/4">
       <Button variant="outline" className="flex flex-row justify-start" asChild>
         <Link href={githubUrl} target="_blank">
           <span>Github</span>

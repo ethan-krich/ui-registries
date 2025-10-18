@@ -12,7 +12,7 @@ export function RegistryPreviewImage({ src, alt }: RegistryPreviewImageProps) {
       alt={alt}
       width={1000}
       height={1000}
-      className="m-4 w-full object-cover"
+      className="m-2 w-full object-cover sm:m-4"
       fallbackSrc="/placeholder.png"
     />
   )

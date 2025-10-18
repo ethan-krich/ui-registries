@@ -39,24 +39,24 @@ export default async function PreviewCard({
         />
       </CardContent>
       <CardFooter className="mt-auto flex gap-4">
-        <div className="flex w-full items-center gap-2">
+        <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center">
           {hasValidHomepage ? (
-            <Button variant="outline" asChild className="ml-auto mt-auto">
+            <Button variant="outline" asChild className="mt-auto sm:ml-auto">
               <Link href={registry.homepage}>
                 <span>View Homepage</span>{" "}
                 <ExternalLinkIcon className="h-4 w-4" />
               </Link>
             </Button>
           ) : (
-            <Button variant="outline" disabled className="ml-auto mt-auto">
+            <Button variant="outline" disabled className="mt-auto sm:ml-auto">
               <span>View Homepage</span>{" "}
               <ExternalLinkIcon className="h-4 w-4" />
             </Button>
           )}
+          <Button asChild>
+            <Link href={`/registry/${registry.name}`}>View registry</Link>
+          </Button>
         </div>
-        <Button asChild>
-          <Link href={`/registry/${registry.name}`}>View registry</Link>
-        </Button>
       </CardFooter>
     </Card>
   )

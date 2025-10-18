@@ -20,10 +20,12 @@ export function RegistryInfo({
   description,
 }: RegistryInfoProps) {
   return (
-    <div className="bg-foreground/10 m-4 rounded-md p-4">
+    <div className="bg-foreground/10 m-4 rounded-md p-3 sm:p-4">
       <article>
-        <h2 className="text-foreground text-2xl font-bold">{title}</h2>
-        <p>{description}</p>
+        <h2 className="text-foreground text-xl font-bold sm:text-2xl">
+          {title}
+        </h2>
+        <p className="text-sm sm:text-base">{description}</p>
       </article>
       <Accordion type="multiple">
         {registry.items.map((item, i) => (

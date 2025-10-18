@@ -33,9 +33,9 @@ export default async function RegistryPage({
   const linkPreview = await getLinkPreviewImage(registry.homepage)
 
   return (
-    <div className="flex gap-4">
-      <div className="flex w-3/4 flex-col">
-        <div className="m-8">
+    <div className="flex flex-col gap-4 lg:flex-row">
+      <div className="flex w-full flex-col lg:w-3/4">
+        <div className="m-4 sm:m-8">
           <RegistryHeader iconSrc={meta.icon} name={registry.name} />
           <RegistryPreviewImage
             src={linkPreview?.images?.[0]}
