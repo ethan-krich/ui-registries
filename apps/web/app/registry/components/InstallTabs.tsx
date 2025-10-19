@@ -21,7 +21,7 @@ export function InstallTabs({
       </TabsList>
       <TabsContent value="ui-registries">
         <CopyBlock
-          text={`npx ui-registries@latest add @${owner}/${item.name}`}
+          text={`npx ui-registries-cli@latest add @${owner}/${item.name}`}
           language="bash"
           showLineNumbers={false}
           theme={dracula}
